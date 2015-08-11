@@ -1,6 +1,6 @@
-[user]
-	name = Ryan Tomayko
-	email = rtomayko@gmail.com
+#[user]
+#	name =
+#	email =
 
 
 [alias]
@@ -45,11 +45,11 @@
 [push]
 	default = current
 
-[sendemail]
-	smtpserver = smtp.gmail.com
-	smtpserverport = 587
-	smtpencryption = tls
-	smtpuser = rtomayko@gmail.com
+#[sendemail]
+#	smtpserver = smtp.fireeye.com
+#	smtpserverport = 587
+#	smtpencryption = tls
+#	smtpuser =
 
 [color]
 	ui = auto

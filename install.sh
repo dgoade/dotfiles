@@ -219,14 +219,14 @@ info "About to install the ULHPC dotfiles from ${DOTFILES}"
 cd ~
 
 ## bash
-add_or_remove_link $DOTFILES/bash/bashrc       ~/.bashrc
-add_or_remove_link $DOTFILES/bash/inputrc      ~/.inputrc
-add_or_remove_link $DOTFILES/bash/bash_profile ~/.bash_profile
-add_or_remove_link $DOTFILES/bash/profile      ~/.profile
-add_or_remove_link $DOTFILES/bash/bash_logout  ~/.bash_logout
+add_or_remove_link $DOTFILES/.bashrc       ~/.bashrc
+add_or_remove_link $DOTFILES/.inputrc      ~/.inputrc
+add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
+#add_or_remove_link $DOTFILES/.profile      ~/.profile
+#add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
 
 ## vim
-add_or_remove_link $DOTFILES/vim/vimrc ~/.vimrc
+add_or_remove_link $DOTFILES/.vimrc ~/.vimrc
 
 ## screen
-add_or_remove_link $DOTFILES/screen/screenrc ~/.screenrc
+add_or_remove_link $DOTFILES/.screenrc ~/.screenrc

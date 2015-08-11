@@ -1,7 +1,7 @@
 #!/bin/bash
 # A basically sane bash environment.
 #
-# Ryan Tomayko <http://tomayko.com/about> (with help from the internets).
+# Based on: Ryan Tomayko <http://tomayko.com/about> (with help from the internets).
 
 # the basics
 : ${HOME=~}
@@ -35,7 +35,7 @@ shopt -s interactive_comments    >/dev/null 2>&1
 shopt -u mailwarn                >/dev/null 2>&1
 shopt -s no_empty_cmd_completion >/dev/null 2>&1
 
-# fuck that you have new mail shit
+# don't report new mail on login
 unset MAILCHECK
 
 # disable core dumps

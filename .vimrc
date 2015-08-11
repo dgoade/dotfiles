@@ -31,7 +31,8 @@ if &t_Co > 2 || has("gui_running")
   endif
   syntax on
   set hlsearch
-  colorscheme slate2
+  colorscheme desert
+  set background=dark
 endif
 
 " ---------------------------------------------------------------------------
@@ -88,7 +89,7 @@ set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
 set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+set visualbell             " quiet, please
 
 " ----------------------------------------------------------------------------
 " Text Formatting
@@ -98,10 +99,10 @@ set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
 set nowrap                 " do not wrap lines
 set softtabstop=2          " yep, two
-set shiftwidth=2           " ..
+set shiftwidth=4           " ..
 set tabstop=4
 set expandtab              " expand tabs to spaces
-set nosmarttab             " fuck tabs
+set nosmarttab             " no tabs
 set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
@@ -156,7 +157,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 autocmd FileType javascript setlocal nocindent
 
 " ----------------------------------------------------------------------------
-"  dbext  - connect to any database and do crazy shit
+"  dbext  - connect to any database and do crazy stuff
 " ----------------------------------------------------------------------------
 
 let g:dbext_default_buffer_lines = 20            " result buffer size
