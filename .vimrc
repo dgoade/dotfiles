@@ -12,8 +12,6 @@ set modeline                          " make sure modeline support is enabled
 set autoread                          " reload files (no local changes only)
 set tabpagemax=50                     " open 50 tabs max
 
-# requires pathogen
-#call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 " ---------------------------------------------------------------------------
