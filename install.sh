@@ -227,6 +227,7 @@ add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
 
 ## vim
 add_or_remove_link $DOTFILES/.vimrc ~/.vimrc
+add_or_remove_link $DOTFILES/.vim ~/.vim
 
 ## screen
 add_or_remove_link $DOTFILES/.screenrc ~/.screenrc
