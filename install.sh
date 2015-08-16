@@ -227,6 +227,13 @@ add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
 add_or_remove_link $DOTFILES/.profile      ~/.profile
 add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
 
+if [ -d ~/.vim ]
+then
+    :
+else
+    ln -s $DOTFILES/.vim          ~/.vim
+fi
+
 ## vim
 add_or_remove_link $DOTFILES/.vimrc ~/.vimrc
 
