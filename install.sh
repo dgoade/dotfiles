@@ -39,7 +39,8 @@ SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 DOTFILES=~/.dotfiles
 
-REPO_URL="https://github.com/dgoade/dotfiles.git"
+GIT_URL="https://github.com/dgoade/dotfiles.git"
+GIT_BRANCH="master"
 
 #######################
 ### print functions ###
@@ -214,7 +215,8 @@ info "About to install the ULHPC dotfiles from ${DOTFILES}"
 [ -z "${FORCE}" ] && really_continue
 
 [[ -z "${OFFLINE}" && -d "${DOTFILES}" ]]   && execute "( cd $DOTFILES ; git pull )"
-[[ ! -d "${DOTFILES}" ]] && execute "git clone ${REPO_URL} ${DOTFILES}"
+[[ ! -d "${DOTFILES}" ]] && execute "git clone ${GIT_URL} ${DOTFILES}"
+execute "cd ${DOTFILES} ; git checkout ${GIT_BRANCH}"
 
 cd ~
 
