@@ -222,12 +222,11 @@ cd ~
 add_or_remove_link $DOTFILES/.bashrc       ~/.bashrc
 add_or_remove_link $DOTFILES/.inputrc      ~/.inputrc
 add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
-#add_or_remove_link $DOTFILES/.profile      ~/.profile
-#add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
+add_or_remove_link $DOTFILES/.profile      ~/.profile
+add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
 
 ## vim
 add_or_remove_link $DOTFILES/.vimrc ~/.vimrc
-add_or_remove_link $DOTFILES/.vim ~/.vim
 
 ## screen
 add_or_remove_link $DOTFILES/.screenrc ~/.screenrc
