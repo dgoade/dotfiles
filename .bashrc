@@ -204,7 +204,7 @@ _expand() {
 # we always pass these to ls(1)
 LS_COMMON="-hBG"
 
-# if the dircolors utility is available, set that up to
+# if the dircolors utility is available, set that up to0
 dircolors="$(type -P gdircolors dircolors | head -1)"
 if [ -n "$dircolors" ]; then
     COLORS=/etc/DIR_COLORS
