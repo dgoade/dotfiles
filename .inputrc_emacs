@@ -20,7 +20,7 @@ set show-all-if-unmodified on
 set completion-prefix-display-length 10
 set print-completions-horizontally off
 
-set editing-mode emacs
+set editing-mode emacs 
 
 # reload file
 "\C-x\C-r": re-read-init-file
