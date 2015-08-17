@@ -84,6 +84,7 @@ export LANG LANGUAGE LC_CTYPE LC_ALL
 : ${FTP_PASSIVE:=1}
 export FTP_PASSIVE
 
+# File name completion ignore
 # ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
 
@@ -182,7 +183,10 @@ if [ -z "$BASH_COMPLETION" ]; then
     bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
     if [ -n "$PS1" -a "$bmajor" -gt 1 ]; then
         # search for a bash_completion file to source
-        for f in /usr/local/etc/bash_completion /etc/bash_completion; do
+        for f in /usr/local/etc/bash_completion \
+            /etc/bash_completion \
+            /opt/local/etc/bash_completion
+        do
             if [ -f $f ]; then
                 . $f
                 break
@@ -204,20 +208,22 @@ _expand() {
 # we always pass these to ls(1)
 LS_COMMON="-hBG"
 
-# if the dircolors utility is available, set that up to0
+# if the dircolors utility is available, set that up too
 dircolors="$(type -P gdircolors dircolors | head -1)"
 if [ -n "$dircolors" ]; then
     COLORS=/etc/DIR_COLORS
     test -e "/etc/DIR_COLORS.$TERM"   && COLORS="/etc/DIR_COLORS.$TERM"
     test -e "$HOME/.dircolors"        && COLORS="$HOME/.dircolors"
     test ! -e "$COLORS"               && COLORS=
-    eval `$dircolors --sh $COLORS`
+    eval $(${dircolors} --sh ${COLORS})
 fi
 unset dircolors
 
 # setup the main ls alias if we've established common args
 if [ -n "$LS_COMMON" ]; then
-    alias ls="command ls $LS_COMMON"
+# dcg -- this is causing ls to ignore the colors set above
+#    alias ls="command ls $LS_COMMON"
+    :
 fi
 
 # these use the ls aliases above

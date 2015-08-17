@@ -158,7 +158,7 @@ add_or_remove_link() {
     [ $# -ne 2 ] && print_error_and_exit "[$FUNCNAME] missing argument(s). Format: $FUNCNAME <src> <dst>"
     local src=$1
     local dst=$2
-	[ ! -f $src ] && print_error_and_exit "Unable to find the dotfile '${src}'"
+	[ ! -e $src ] && print_error_and_exit "Unable to find the dotfile '${src}'"
     if [ "${MODE}" == "--delete" ]; then
 		debug "removing dst='$dst' (if symlink pointing to src='$src' =? $(readlink $dst))"
 		if [[ -h $dst && "$(readlink $dst)" == "${src}" ]]; then
@@ -221,21 +221,21 @@ execute "cd ${DOTFILES} ; git checkout ${GIT_BRANCH}"
 cd ~
 
 ## bash
-add_or_remove_link $DOTFILES/.bashrc       ~/.bashrc
-add_or_remove_link $DOTFILES/.inputrc      ~/.inputrc
-add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
-add_or_remove_link $DOTFILES/.profile      ~/.profile
-add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
+#add_or_remove_link $DOTFILES/.bashrc       ~/.bashrc
+#add_or_remove_link $DOTFILES/.inputrc      ~/.inputrc
+#add_or_remove_link $DOTFILES/.bash_profile ~/.bash_profile
+#add_or_remove_link $DOTFILES/.profile      ~/.profile
+#add_or_remove_link $DOTFILES/.bash_logout  ~/.bash_logout
+#add_or_remove_link $DOTFILES/.dircolors    ~/.dircolors
 
-if [ -d ~/.vim ]
-then
-    :
-else
-    ln -s $DOTFILES/.vim          ~/.vim
-fi
-
-## vim
-add_or_remove_link $DOTFILES/.vimrc ~/.vimrc
-
-## screen
-add_or_remove_link $DOTFILES/.screenrc ~/.screenrc
+# dcg -- find and link all dotfiles except for the .git dir
+for dotfile in $(find ${DOTFILES} -maxdepth 1 ! -path ${DOTFILES} -name ".*")
+do
+    dotfileName=$(basename ${dotfile})
+    if [ $dotfileName = ".git" ]
+    then
+        :
+    else
+        add_or_remove_link ${dotfile} ~/${dotfileName}
+    fi
+done
