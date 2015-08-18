@@ -11,7 +11,7 @@
 # Installation script for ULHPC dotfiles within the homedir of the user running
 # this script. 
 
-set -x # Debug
+#set -x # Debug
 
 ### Global variables
 VERSION=0.1
