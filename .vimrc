@@ -68,7 +68,6 @@ set directory=~/.vim/swap,~/tmp,.      " keep swp files under ~/.vim/swap
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
-set number                 " line numbers
 set wildmenu               " turn on wild menu
 set wildmode=list:longest,full
 set ch=2                   " command line height
