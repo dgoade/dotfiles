@@ -296,8 +296,16 @@ set_user_env()
 # -------------------------------------------------------------------
 # Aliases
 # -------------------------------------------------------------------
+set_motd()
+{
+    declare -i rval=0
 
-alias topdu='du -s * | sort -k1,1rn | head'
+    alias topdu='du -s * | sort -k1,1rn | head'
+    rval=$?
+
+    return ${rval}
+
+}
 
 # -------------------------------------------------------------------
 # MOTD / FORTUNE
@@ -370,6 +378,12 @@ main()
     if [ ${rval} -eq 0 ]
     then
         set_user_env
+        rval=$?
+    fi
+
+    if [ ${rval} -eq 0 ]
+    then
+        set_aliases
         rval=$?
     fi
 
