@@ -211,10 +211,22 @@ if [ $greprc -ne 0 ]; then
     warning "Assume dotfiles directory '${DOTFILES}' is relative to the home directory"
     DOTFILES="$HOME/${DOTFILES}"
 fi
-info "About to install the ULHPC dotfiles from ${DOTFILES}"
+info "About to install the dotfiles from ${DOTFILES}"
 [ -z "${FORCE}" ] && really_continue
 
-[[ -z "${OFFLINE}" && -d "${DOTFILES}" ]]   && execute "( cd $DOTFILES ; git pull )"
+#[[ -z "${OFFLINE}" && -d "${DOTFILES}" ]]   && execute "( cd $DOTFILES ; git pull )"
+if [ -z "${OFFLINE}" ]
+then
+    if [ -d "${DOTFILES}" ]
+    then
+        execute "( cd $DOTFILES ; git pull )"
+    else
+        :
+    fi
+else
+    :
+fi
+
 [[ ! -d "${DOTFILES}" ]] && execute "git clone ${GIT_URL} ${DOTFILES}"
 execute "cd ${DOTFILES} ; git checkout ${GIT_BRANCH}"
 
